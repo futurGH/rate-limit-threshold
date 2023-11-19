@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    target-branch: main
+    open-pull-requests-limit: 20
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: [ "version-update:semver-patch" ]

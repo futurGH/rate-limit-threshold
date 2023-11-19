@@ -1,0 +1,16 @@
+node_modules/
+.idea/
+*.iml
+test/**/*.js
+test/**/*.map
+test/**/*.d.ts
+lib/**/*.js
+lib/**/*.map
+lib/**/*.d.ts
+coverage/
+.nyc_output
+etc
+priv
+.travis.yml
+tslint.json
+package-lock.json
