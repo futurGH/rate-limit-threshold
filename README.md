@@ -2,7 +2,7 @@
 [![NPM version](https://img.shields.io/npm/v/rate-limit-threshold.svg)](https://npmjs.org/package/rate-limit-threshold)
 [![npm downloads](http://img.shields.io/npm/dm/rate-limit-threshold.svg)](https://npmcharts.com/compare/rate-limit-threshold?interval=30&start=365)
 [![Coverage Status](https://coveralls.io/repos/github/Borewit/rate-limit-threshold/badge.svg?branch=main)](https://coveralls.io/github/Borewit/rate-limit-threshold?branch=main)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2bc47b2006454bae8c737991f152e518)](https://www.codacy.com/gh/Borewit/rate-limit-threshold/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Borewit/rate-limit-threshold&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f65f6e108fd47549a4117f91316e8cd)](https://app.codacy.com/gh/Borewit/rate-limit-threshold/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![CodeQL](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/Borewit/rate-limit-threshold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Borewit/rate-limit-threshold?targetFile=package.json)
 
