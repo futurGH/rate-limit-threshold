@@ -24,14 +24,35 @@ Example
 import {RateLimitThreshold} from 'rate-limit-threshold';
 
 (async () => {
-  const rateLimitThreshold = new RateLimitThreshold(20, 10); // Maximum 20 calls in 10 seconds
+  const rateLimitThreshold = new RateLimitThreshold(3, 1); // Maximum 3 requests in 1 seconds
 
-  for(let n; n<100; ++n) {
-      await rateLimitThreshold.limit(); // Slow down loop to comply with 20 call in 10 seconds
+  for (let n = 0; n < 7; ++n) {
+    const delayInMs = await rateLimitThreshold.limit(); // Slow down loop to comply with 20 call in 10 seconds
+    console.log('Timeout applied to coply with rate limit', delayInMs);
+    // after the limit() is been aplied, you call your limitted requested
   }
-    
 })();
 ```
+
+## API
+
+### RateLimitThreshold
+
+### Constructor
+
+`new RateLimitThreshold(requests, period);`
+
+Arguments:
+* `requests`, _number_, Allowed requests within period (window) 
+* `period`, _number_, Period (window) in milliseconds
+
+### limit
+
+Call limit before the function you want call no more than `requests` in per `period`.
+
+`const timeSleptInMs await = limit()`
+
+Promise which resolved when timeout (sleep). The time in milliseconds slept is returned. 
 
 ## Compatibility 
 

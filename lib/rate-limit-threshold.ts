@@ -8,29 +8,37 @@ export class RateLimitThreshold {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  public queue: number[] = [];
+  private queue: number[] = [];
   private readonly period: number;
 
-  public constructor(private maxCalls: number, period: number) {
-    debug(`Rate limiter initialized with max ${maxCalls} calls in ${period} seconds.`);
+  /**
+   * @param requests Number of allowed requests with period
+   * @param period Period in milliseconds
+   */
+  public constructor(private requests: number, period: number) {
+    debug(`Rate limiter initialized with max ${requests} calls in ${period} seconds.`);
     this.period = 1000 * period;
   }
 
-  public async limit(): Promise<void> {
-    let now = new Date().getTime();
+  /**
+   * Call limit before the function you want call no more than `requests` in per `period`.
+   * @return Resolved when timeout completed comply with rate limit threshold
+   */
+  public async limit(): Promise<number> {
+    const now = new Date().getTime();
     const t0 = now - (this.period);
     while (this.queue.length > 0 && this.queue[0] < t0) {
       this.queue.shift();
     }
+    let delay = 0;
     // debug(`Current rate is  ${this.queue.length} per ${this.period / 1000} sec`);
-    if (this.queue.length >= this.maxCalls) {
-      const delay = this.queue[0] + this.period - now;
+    if (this.queue.length >= this.requests) {
+      delay = this.queue[0] + this.period - now;
       debug(`Client side rate limiter activated: cool down for ${delay / 1000} s...`);
-      return RateLimitThreshold.sleep(delay);
+      await RateLimitThreshold.sleep(delay);
     }
-    now = new Date().getTime();
-    this.queue.push(now);
-    // const ratePerSec = 1000 * this.queue.length / (now - this.queue[0]);
+    this.queue.push(new Date().getTime());
+    return delay;
   }
 
 }
