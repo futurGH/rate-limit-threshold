@@ -43,8 +43,8 @@ import {RateLimitThreshold} from 'rate-limit-threshold';
 `new RateLimitThreshold(requests, period);`
 
 Arguments:
-* `requests`, _number_, Allowed requests within period (window) 
-* `period`, _number_, Period (window) in milliseconds
+*  `requests`, _number_, Allowed requests within period (window) 
+*  `period`, _number_, Period (window) in milliseconds
 
 ### limit
 
