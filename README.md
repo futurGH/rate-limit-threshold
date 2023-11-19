@@ -5,6 +5,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f65f6e108fd47549a4117f91316e8cd)](https://app.codacy.com/gh/Borewit/rate-limit-threshold/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![CodeQL](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/Borewit/rate-limit-threshold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Borewit/rate-limit-threshold?targetFile=package.json)
+[![DeepScan grade](https://deepscan.io/api/teams/5165/projects/25925/branches/818257/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5165&pid=25925&bid=818257)
 
 # rate-limit-threshold
 
