@@ -6,6 +6,7 @@
 [![CodeQL](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/Borewit/rate-limit-threshold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Borewit/rate-limit-threshold?targetFile=package.json)
 [![DeepScan grade](https://deepscan.io/api/teams/5165/projects/25925/branches/818257/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5165&pid=25925&bid=818257)
+[![Bundlephobia minified size](https://badgen.net/bundlephobia/min/rate-limit-threshold)](https://bundlephobia.com/package/rate-limit-threshold)
 
 # rate-limit-threshold
 
