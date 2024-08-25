@@ -1,12 +1,12 @@
 [![Node.js CI](https://github.com/Borewit/rate-limit-threshold/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/nodejs-ci.yml)
+[![CodeQL](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml)
 [![NPM version](https://img.shields.io/npm/v/rate-limit-threshold.svg)](https://npmjs.org/package/rate-limit-threshold)
 [![npm downloads](http://img.shields.io/npm/dm/rate-limit-threshold.svg)](https://npmcharts.com/compare/rate-limit-threshold?interval=30&start=365)
 [![Coverage Status](https://coveralls.io/repos/github/Borewit/rate-limit-threshold/badge.svg?branch=main)](https://coveralls.io/github/Borewit/rate-limit-threshold?branch=main)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f65f6e108fd47549a4117f91316e8cd)](https://app.codacy.com/gh/Borewit/rate-limit-threshold/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![CodeQL](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml/badge.svg)](https://github.com/Borewit/rate-limit-threshold/actions/workflows/codeql.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/Borewit/rate-limit-threshold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Borewit/rate-limit-threshold?targetFile=package.json)
 [![DeepScan grade](https://deepscan.io/api/teams/5165/projects/25925/branches/818257/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5165&pid=25925&bid=818257)
-[![Bundlephobia minified size](https://badgen.net/bundlephobia/min/rate-limit-threshold)](https://bundlephobia.com/package/rate-limit-threshold)
+[![bundlejs.com badge](https://deno.bundlejs.com/?q=rate-limit-threshold&badge)](https://bundlejs.com/?q=rate-limit-threshold)
 
 # rate-limit-threshold
 
@@ -15,48 +15,76 @@
 ```shell
 npm install rate-limit-threshold
 ```
-This package is an ESM package. Your project needs to be ESM too. [Read more](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+This package is an ESM (ECMAScript Module) package. Therefore, your project must also use the ESM format. For more details,
+refer to [this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+
+## Compatibility
+
+This package is compatible with:
+1. [Pure ESM environments](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
+1. [ECMAScript 2019](https://262.ecma-international.org/10.0/)
+
+## Sponsor
+
+If you find this package useful and would like to support the development of open-source projects, 
+please consider sponsoring or making a contribution. 
+Your support helps sustain ongoing development and improvements.
+
+Some of my other projects you may want to support include:
+- [musicbrainz-api](https://github.com/Borewit/musicbrainz-api), 
+- [music-metadata](https://github.com/Borewit/music-metadata), 
+- [file-type](https://github.com/sindresorhus/file-type), [listFix()](https://github.com/Borewit/listFix), 
+- [lizzy](https://github.com/Borewit/lizzy)
+- [strtok3](https://github.com/Borewit/strtok3) or [tokenizer-s3](https://github.com/Borewit/tokenizer-s3)
+
+[Become a sponsor to Borewit](https://github.com/sponsors/Borewit)
 
 ## Usage
 
-A [rate-limit-threshold](https://en.wikipedia.org/wiki/Rate_limiting) which restricts a maximum number of call in a given time frame. 
+A `rate-limit-threshold` helps enforce rate limits by restricting the maximum number of calls allowed within a specified time frame.
+More information about rate limiting can be found [here](https://en.wikipedia.org/wiki/Rate_limiting).
 
 Example
 ```js
-import {RateLimitThreshold} from 'rate-limit-threshold';
+import { RateLimitThreshold } from 'rate-limit-threshold';
 
 (async () => {
-  const rateLimitThreshold = new RateLimitThreshold(3, 1); // Maximum 3 requests in 1 seconds
+    const rateLimitThreshold = new RateLimitThreshold(3, 1000); // Allow a maximum of 3 requests per second
 
-  for (let n = 0; n < 7; ++n) {
-    const delayInMs = await rateLimitThreshold.limit(); // Slow down loop to comply with 20 call in 10 seconds
-    console.log('Timeout applied to coply with rate limit', delayInMs);
-    // after the limit() is been aplied, you call your limitted requested
-  }
+    for (let n = 0; n < 7; ++n) {
+        const delayInMs = await rateLimitThreshold.limit(); // Apply delay to comply with the rate limit
+        console.log('Timeout applied to comply with rate limit:', delayInMs);
+        // After the limit() has been applied, proceed with your rate-limited request
+    }
 })();
+
 ```
 
-## API
+## API Documentation
 
-### RateLimitThreshold
+### `RateLimitThreshold`
 
-### Constructor
+#### Constructor
 
-`new RateLimitThreshold(requests, period);`
+Create an instance of RateLimitThreshold with the following syntax:
 
-Arguments:
-*  `requests`, _number_, Allowed requests within period (window) 
-*  `period`, _number_, Period (window) in milliseconds
+```js
+new RateLimitThreshold(requests, period);
+```
 
-### limit
+##### Parameters:
+-  `requests` (number): The maximum number of requests allowed within the specified period.
+-  `period` (number): The time period (in milliseconds) within which the specified number of requests are allowed.
 
-Call limit before the function you want call no more than `requests` in per `period`.
+#### `limit`
 
-`const timeSleptInMs await = limit()`
+The `limit()` method ensures that the number of function calls does not exceed the specified requests within the given period.
+This method should be called before the function you wish to rate limit.
 
-Promise which resolved when timeout (sleep). The time in milliseconds slept is returned. 
+```js
+const timeSleptInMs = await rateLimitThreshold.limit();
+```
 
-## Compatibility 
+##### Returns:
 
-1.  [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
-2.  [ECMAScript 2019](https://262.ecma-international.org/10.0/)
+A promise that resolves after a delay, with the time (in milliseconds) that the execution was paused.
