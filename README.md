@@ -22,7 +22,7 @@ refer to [this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7f
 
 This package is compatible with:
 1. [Pure ESM environments](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
-1. [ECMAScript 2019](https://262.ecma-international.org/10.0/)
+1. [ECMAScript 2020 (11th Edition)](https://en.wikipedia.org/wiki/ECMAScript_version_history#11th_Edition_%E2%80%93_ECMAScript_2020) standard.
 
 ## Sponsor
 
